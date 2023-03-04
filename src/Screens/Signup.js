@@ -34,18 +34,18 @@ const SignUpScreen = ({navigation}) => {
       navigation.navigate('UserShow');
     }
   }, [user]);
-  function onAuthStateChanged(user) {
-    setUser(user);
-    if (user) {
-      console.log(user);
-    }
-    if (initializing) setInitializing(false);
-  }
+  // function onAuthStateChanged(user) {
+  //   setUser(user);
+  //   if (user) {
+  //     console.log(user);
+  //   }
+  //   if (initializing) setInitializing(false);
+  // }
 
-  useEffect(() => {
-    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-    return subscriber;
-  }, []);
+  // useEffect(() => {
+  //   const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+  //   return subscriber;
+  // }, []);
   useEffect(() => {
     if (error) {
       console.log(error);
@@ -64,20 +64,20 @@ const SignUpScreen = ({navigation}) => {
       setloginmailerr(false);
       if (loginpass.length >= 6) {
         setloginpasserr(false);
-        auth()
-          .signInWithEmailAndPassword(loginmail, loginpass)
-          .then(() => {
-            console.log('User account created & signed in!');
-          })
-          .catch(error => {
-            if (error.code === 'auth/email-already-in-use') {
-              console.log('That email address is already in use!');
-            }
-            if (error.code === 'auth/invalid-email') {
-              console.log('That email address is invalid!');
-            }
-            console.error(error);
-          });
+        // auth()
+        //   .signInWithEmailAndPassword(loginmail, loginpass)
+        //   .then(() => {
+        //     console.log('User account created & signed in!');
+        //   })
+        //   .catch(error => {
+        //     if (error.code === 'auth/email-already-in-use') {
+        //       console.log('That email address is already in use!');
+        //     }
+        //     if (error.code === 'auth/invalid-email') {
+        //       console.log('That email address is invalid!');
+        //     }
+        //     console.error(error);
+          // });
       } else {
         console.log('wrong pass');
         setloginpasserr(true);
@@ -96,20 +96,20 @@ const SignUpScreen = ({navigation}) => {
         setmailerr(false);
         if (pass.length >= 6) {
           setpasserr(false);
-          auth()
-            .createUserWithEmailAndPassword(mail, pass)
-            .then(() => {
-              console.log('User account created & signed in!');
-            })
-            .catch(error => {
-              if (error.code === 'auth/email-already-in-use') {
-                console.log('That email address is already in use!');
-              }
-              if (error.code === 'auth/invalid-email') {
-                console.log('That email address is invalid!');
-              }
-              console.error(error);
-            });
+          // auth()
+          //   .createUserWithEmailAndPassword(mail, pass)
+          //   .then(() => {
+          //     console.log('User account created & signed in!');
+          //   })
+          //   .catch(error => {
+          //     if (error.code === 'auth/email-already-in-use') {
+          //       console.log('That email address is already in use!');
+          //     }
+          //     if (error.code === 'auth/invalid-email') {
+          //       console.log('That email address is invalid!');
+          //     }
+          //     console.error(error);
+          //   });
         } else {
           console.log('wrong pass');
           setpasserr(true);
@@ -126,6 +126,7 @@ const SignUpScreen = ({navigation}) => {
 
   return chksignin ? (
     <>
+    
       <View
         style={{
           flex: 1,
@@ -135,6 +136,7 @@ const SignUpScreen = ({navigation}) => {
         }}>
         <Text style={styles.heading}>SAYLANI WELFARE</Text>
         <Text style={styles.text}>ONLINE DISCOUNT STORE</Text>
+        <Text style={styles.headingerr}>Email is Already Registered</Text>
         <View style={{width: '70%', justifyContent: 'flex-start'}}>
           <Text style={{color: 'black'}}>Username</Text>
         </View>
@@ -188,7 +190,11 @@ const SignUpScreen = ({navigation}) => {
 
         <TouchableOpacity
           style={styles.btn}
-          onPress={FSignUp}
+          onPress={
+            // FSignUp
+            ()=> navigation.navigate("UserShow")
+          
+          }
           // onPress={() => navigation.replace('UserShow')}
         >
           <Text style={styles.btntxt}>Sign Up</Text>
@@ -214,6 +220,7 @@ const SignUpScreen = ({navigation}) => {
         }}>
         <Text style={styles.heading}>SAYLANI WELFARE</Text>
         <Text style={styles.text}>ONLINE DISCOUNT STORE</Text>
+        <Text style={styles.headingerr}>Wrong Id or Passward</Text>
         <View style={{width: '70%', justifyContent: 'flex-start'}}>
           <Text style={{color: 'black'}}>Email</Text>
         </View>
@@ -252,7 +259,8 @@ const SignUpScreen = ({navigation}) => {
 
         <TouchableOpacity
           onPress={() => {
-            logins();
+            // logins();
+            navigation.navigate("UserShow")
           }}
           style={styles.btn}>
           <Text style={styles.btntxt}>Login</Text>
@@ -302,6 +310,12 @@ const styles = StyleSheet.create({
     fontSize: 33,
     fontWeight: 'bold',
   },
+  headingerr:{
+    color : 'red',
+    fontSize: 28,
+    fontWeight: '700',
+    shadowColor :'red'
+  }
 });
 
 export default SignUpScreen;

@@ -6,21 +6,38 @@ import {
   Text,
   ScrollView,
   TouchableHighlight,
-  TouchableOpacity
+  TouchableOpacity,
 } from 'react-native';
-import Picker from '@react-native-picker/picker';
-import React, {useState} from 'react';
+import DropDownPicker from 'react-native-dropdown-picker';
+import {Picker} from '@react-native-picker/picker';
+import React, {useState, useRef, useEffect} from 'react';
 import DocumentPicker from 'react-native-document-picker';
 const AddProducts = () => {
+  const pickerRef = useRef();
+
+  function open() {
+    pickerRef.current.focus();
+  }
+
+  function close() {
+    pickerRef.current.blur();
+    console.log(selectedValue);
+  }
+
   const [selected, setSelected] = useState(null);
   const [selectedValue, setSelectedValue] = useState('');
-
+  useEffect(() => {
+    console.log(selectedValue);
+  }, [selectedValue]);
   const pickDocument = async () => {
     try {
       const result = await DocumentPicker.pick({
         type: [DocumentPicker.types.allFiles],
       });
       setSelected(result);
+      if (result) {
+        console.log(selected);
+      }
     } catch (err) {
       if (DocumentPicker.isCancel(err)) {
         console.log('Canceled from single picker');
@@ -30,8 +47,7 @@ const AddProducts = () => {
     }
   };
   return (
-    <ScrollView
-      style={{flex: 10, height: '100%'}}>
+    <ScrollView style={{flex: 10, height: '100%'}}>
       <View
         style={{
           flex: 1.5,
@@ -83,18 +99,34 @@ const AddProducts = () => {
             padding={10}
           />
           <View style={styles.picker}>
-            {/* <Picker
-                selectedValue={selectedValue}
-                style={{height: 50, width: 200}}
-                onValueChange={(itemValue, itemIndex) =>
-                  setSelectedValue(itemValue)
-                }>
-                    {/* //Category map     */}
-            {/* <Picker.Item label="Java" value="java" />
-                <Picker.Item label="JavaScript" value="js" />
-                <Picker.Item label="Python" value="python" />
-                <Picker.Item label="C++" value="cpp" />
-              </Picker> */}
+            <Picker
+              ref={pickerRef}
+              selectedValue={selectedValue}
+              style={{color: 'gray', width: '100%', padding: 10}}
+              onValueChange={(itemValue, itemIndex) =>
+                setSelectedValue(itemValue)
+              }>
+              <Picker.Item
+                style={{fontSize: 20, fontWeight: 800}}
+                label="Java"
+                value="java"
+              />
+              <Picker.Item
+                style={{fontSize: 20, fontWeight: 800}}
+                label="JavaScript"
+                value="js"
+              />
+              <Picker.Item
+                style={{fontSize: 20, fontWeight: 800}}
+                label="Python"
+                value="python"
+              />
+              <Picker.Item
+                style={{fontSize: 20, fontWeight: 800}}
+                label="C++"
+                value="cpp"
+              />
+            </Picker>
           </View>
           <TextInput
             style={styles.input2}
@@ -144,11 +176,19 @@ const AddProducts = () => {
                 padding={10}
               />
             </View>
-            <View style={{width: '100%', justifyContent : 'center' , alignItems : 'center',height:100}}>
-            <TouchableOpacity style={styles.btn} onPress={() => navigation.replace('AccountsPage')}>
-             <Text style={styles.btntxt}>Get Started</Text>
-           </TouchableOpacity>
-           </View>
+            <View
+              style={{
+                width: '100%',
+                justifyContent: 'center',
+                alignItems: 'center',
+                height: 100,
+              }}>
+              <TouchableOpacity
+                style={styles.btn}
+                onPress={() => navigation.replace('AccountsPage')}>
+                <Text style={styles.btntxt}>Add Product</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       </View>
@@ -170,26 +210,27 @@ const styles = StyleSheet.create({
     marginTop: 5,
     borderRadius: 20,
   },
-  btn:{
-        backgroundColor : '#61B846',
-        width : 226,
-        height :69,
-        justifyContent : 'center',
-        alignItems : 'center',
-        borderRadius : 10,
-        marginTop : 70
-      },
-      btntxt:{
-        color : 'white',
-        fontSize : 33,
-        fontWeight : 'bold'
-      },
+  btn: {
+    backgroundColor: '#61B846',
+    width: 226,
+    height: 69,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+    marginTop: 70,
+  },
+  btntxt: {
+    color: 'white',
+    fontSize: 29,
+    fontWeight: 'bold',
+  },
   picker: {
     backgroundColor: 'lightgray',
     height: 40,
     width: '100%',
     borderRadius: 20,
     marginTop: 5,
+    justifyContent: 'center',
   },
   input1: {
     backgroundColor: 'lightgray',
@@ -240,4 +281,3 @@ const styles = StyleSheet.create({
   },
 });
 export default AddProducts;
-

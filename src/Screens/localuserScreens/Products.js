@@ -10,65 +10,70 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import AntDesign from 'react-native-vector-icons/AntDesign';
 
 const Products = () => {
   const seconditems = [
     {
       title: 'meat',
       price: 'Rs.800-per kg',
-      image: require('../../Images/image32.png'),
+      image: require('../../Images/food1.png'),
       discription1: 'This is product description',
       discription2: 'This is abc product description',
     },
     {
       title: 'fish',
       price: 'Rs.800-per kg',
-      image: require('../../Images/image32.png'),
+      image: require('../../Images/food2.png'),
       discription1: 'This is product description',
       discription2: 'This is abc product description',
     },
     {
       title: 'Beef Qeema',
       price: 'Rs.800-per kg',
-      image: require('../../Images/image32.png'),
+      image: require('../../Images/food1.png'),
       discription1: 'This is product description',
       discription2: 'This is abc product description',
     },
     {
       title: 'meat',
       price: 'Rs.800-per kg',
-      image: require('../../Images/image32.png'),
+      image: require('../../Images/food2.png'),
       discription1: 'This is product description',
       discription2: 'This is abc product description',
     },
   ];
 
   return (
-    <ScrollView keyboardShouldPersistTaps="handled" scrollEnabled={true}>
-      <SafeAreaView style={{flex: 1}}>
+    <ScrollView keyboardShouldPersistTaps="handled" scrollEnabled={true} nestedScrollEnabled={true}>
+      <View style={{flex: 1}}>
         <View style={{width: '90%', alignSelf: 'center'}}>
           <View style={styles.topview}>
             <View style={styles.toptext}>
               <Text style={styles.logotext}>SAYLANI WELFARE</Text>
               <Text style={styles.logotext2}>DISCOUNT STORE</Text>
             </View>
-            <MaterialCommunityIcons
+            {/* <MaterialCommunityIcons
               name="cart-variant"
               size={32}
               color={'black'}
-            />
+            /> */}
+             <Image
+            source={require('../../Images/Carticon.png')}
+            // style={styles.groceryimages}
+          />
+            
           </View>
           <Image
             source={require('../../Images/Grocery.png')}
             style={styles.groceryimages}
           />
 
-          <View style={{marginTop: 10}}>
+          <View style={{marginTop: 10 , }}>
             <View style={styles.secondlist}>
               <FlatList
                 style={{width: '100%'}}
                 data={seconditems}
+                scrollEnabled={false}
                 renderItem={items => {
                   return (
                     <View
@@ -153,11 +158,7 @@ const Products = () => {
                                   alignItems: 'center',
                                   justifyContent: 'center',
                                 }}>
-                                <AntDesign
-                                  name="plus"
-                                  color="black"
-                                  size={22}
-                                />
+                                <Text style={{fontWeight:'bold'  , color : 'white'}}>+</Text>
                               </View>
                             </TouchableOpacity>
                           </View>
@@ -170,7 +171,7 @@ const Products = () => {
             </View>
           </View>
         </View>
-      </SafeAreaView>
+    </View>
     </ScrollView>
   );
 };
@@ -218,7 +219,7 @@ const styles = StyleSheet.create({
     width: 115,
     height: 82,
     borderRadius: 15,
-    evalution: 10,
+    // evalution: 10,
   },
   secondlist: {
     width: '100%',

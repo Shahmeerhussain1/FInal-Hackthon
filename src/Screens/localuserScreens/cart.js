@@ -6,9 +6,7 @@ import {
   TouchableOpacity,
   Image,
   TextInput,
-  ScrollViewBase,
   ScrollView,
-  FlatList,
 } from 'react-native';
 
 import Trash from 'react-native-vector-icons/FontAwesome';
@@ -18,81 +16,51 @@ const Carts = ({navigation}) => {
     <>
       <ScrollView>
         <View style={styles.cart_body}>
-          <View style={styles.image_parent}>
-            <Image
-              style={{width: 30, height: 30}}
-              source={require('../../Images/Ellipse.png')}
-            />
-          </View>
-          <View style={styles.header_cart}>
-            <View style={styles.cart_heading}>
-              <Text style={{color: '#024F9D', fontSize: 50}}>Shopping</Text>
-              <Text style={{color: '#61B846', fontSize: 40}}>Cart</Text>
+          <View style={{width: '100%'}}>
+            <View style={styles.image_parent}>
+              <Image
+                style={{width: 40, height: 40}}
+                source={require('../../Images/Ellipse.png')}
+              />
             </View>
-            <View>
-              <TouchableOpacity style={styles.delete_cart}>
-                <Trash style={{marginTop: 40}} name="trash">
-                  Delete
-                </Trash>
-              </TouchableOpacity>
+            <View style={styles.header_cart}>
+              <View style={{width: '90%' ,flexDirection: 'row', justifyContent : 'space-between'}}>
+                <View style={styles.cart_heading}>
+                  <Text style={styles.logotext}>Shopping</Text>
+                  <Text style={styles.logotext2}>Cart</Text>
+                </View>
+
+                <View style={styles.cart_heading2}>
+                  <TouchableOpacity >
+                    <Image
+                      style={{width: 20, height: 20}}
+                      source={require('../../Images/Frame.png')}
+                    />
+                  </TouchableOpacity>
+                </View>
+              </View>
             </View>
           </View>
           <View style={styles.header_two}>
             <View>
               <Image
                 style={styles.logoImage}
-                source={require('../../Images/Ellipse.png')}
+                source={require('../../Images/Rectangle.png')}
               />
             </View>
 
-            <View style={{justifyContent: 'center'}}>
-              <Text style={{fontWeight: 'bold' , color : 'gray'}}>ITEM NAME</Text>
+            <View style={{justifyContent: 'center',width : '25%'}}>
+              <Text style={{fontWeight: 'bold', color: 'gray'}}>ITEfffffffffffffffffffffffffffffffffffM NAME</Text>
             </View>
 
-            <View
-              style={{
-                justifyContent: 'center',
-                display: 'flex',
-                flexDirection: 'row',
-                marginTop: 32,
-                alignItems:'center'
-              }}>
-              <Text style={{marginRight: 5 , color : 'gray'}}>+</Text>
-              <Text style={{marginRight: 5 , color : 'gray'}}>1</Text>
-              <Text style={{marginLeft: 5 , color : 'gray'}}>-</Text>
+            <View style={styles.decincpar}>
+              <Text style={styles.incdec}>+</Text>
+              <Text style={styles.incdec}>1</Text>
+              <Text style={styles.incdec}>-</Text>
             </View>
 
             <View style={{justifyContent: 'center'}}>
-              <Text style={{fontWeight: 'bold' , color : 'gray'}}>250</Text>
-            </View>
-          </View>
-
-          <View style={styles.header_two}>
-            <View>
-              <Image
-                style={styles.logoImage}
-                source={require('../../Images/Ellipse.png')}
-              />
-            </View>
-
-            <View style={{justifyContent: 'center'}}>
-              <Text style={{fontWeight: 'bold' , color : 'gray'}}>ITEM NAME</Text>
-            </View>
-
-            <View
-              style={{
-                justifyContent: 'center',
-                display: 'flex',
-                flexDirection: 'row',
-                marginTop: 32,
-              }}>
-              <Text style={{marginRight: 5 , color : 'gray'}}>+</Text>
-              <Text style={{marginRight: 5 , color : 'gray'}}>1</Text>
-              <Text style={{marginLeft: 5 , color : 'gray'}}>-</Text>
-            </View>
-
-            <View style={{justifyContent: 'center'}}>
-              <Text style={{fontWeight: 'bold' , color : 'gray'}}>450</Text>
+              <Text style={{fontWeight: 'bold', color: 'gray'}}>250</Text>
             </View>
           </View>
 
@@ -100,36 +68,49 @@ const Carts = ({navigation}) => {
             <View>
               <Image
                 style={styles.logoImage}
-                source={require('../../Images/Ellipse.png')}
+                source={require('../../Images/Rectangle2.png')}
               />
             </View>
-
-            <View style={{justifyContent: 'center'}}>
-              <Text style={{fontWeight: 'bold' , color : 'gray'}}>ITEM NAME</Text>
+            <View style={{justifyContent: 'center',width : '25%'}}>
+              <Text style={{fontWeight: 'bold', color: 'gray'}}>ITEM fffffffffffffffffffffffffffffffffffffffffffNAME</Text>
             </View>
-
-            <View
-              style={{
-                justifyContent: 'center',
-                display: 'flex',
-                flexDirection: 'row',
-                marginTop: 32,
-              }}>
-              <Text style={{marginRight: 5 , color : 'gray'}}>+</Text>
-              <Text style={{marginRight: 5 , color : 'gray'}}>1</Text>
-              <Text style={{marginLeft: 5 , color : 'gray'}}>-</Text>
+            <View style={styles.decincpar}>
+              <Text style={styles.incdec}>+</Text>
+              <Text style={styles.incdec}>1</Text>
+              <Text style={styles.incdec}>-</Text>
             </View>
 
             <View style={{justifyContent: 'center'}}>
-              <Text style={{fontWeight: 'bold' , color : 'gray'}}>350</Text>
+              <Text style={{fontWeight: 'bold', color: 'gray'}}>450</Text>
             </View>
           </View>
 
-          <View style={styles.line}></View>
+          <View style={styles.header_two}>
+            <View>
+              <Image
+                style={styles.logoImage}
+                source={require('../../Images/Rectangle.png')}
+              />
+            </View>
+
+            <View style={{justifyContent: 'center',width : '25%'}}>
+              <Text style={{fontWeight: 'bold', color: 'gray' }}>ITEM NAfffffffffffffffffffMEfgsfdgdrtderseersefsd</Text>
+            </View>
+
+            <View style={styles.decincpar}>
+              <Text style={styles.incdec}>+</Text>
+              <Text style={styles.incdec}>1</Text>
+              <Text style={styles.incdec}>-</Text>
+            </View>
+
+            <View style={{justifyContent: 'center'}}>
+              <Text style={{fontWeight: 'bold', color: 'gray'}}>350</Text>
+            </View>
+          </View>
 
           <View style={styles.Total_Amount}>
-            <Text style={{fontWeight: 'bold' , color : 'gray'}}> Total</Text>
-            <Text style={{fontWeight: 'bold', color : 'gray'}}> 1050</Text>
+            <Text style={{fontWeight: 'bold', color: 'gray'}}> Total</Text>
+            <Text style={{fontWeight: 'bold', color: 'gray'}}> 1050</Text>
           </View>
 
           <View style={styles.header_three}>
@@ -169,6 +150,32 @@ const Carts = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
+  cart_heading: {
+
+    width: '40%',
+  },
+  cart_heading2: {
+
+    width: '40%',
+    flexDirection:'row',
+    justifyContent : 'flex-end',
+    alignItems : 'center'
+  },
+  decincpar: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+    width: '15%',
+  },
+  incdec: {
+    color: 'gray',
+    fontWeight: 'bold',
+    width: '33%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    textAlign: 'center',
+    backgroundColor: 'lightgray',
+  },
   cart_body: {
     backgroundColor: '#fff',
     height: '100%',
@@ -178,16 +185,28 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   header_cart: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
+   
+    width: '100%',
+    alignItems: 'center',
   },
-
+  logotext2: {
+    color: '#024F9D',
+    fontSize: 13,
+    fontWeight: '600',
+  },
   header_two: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     marginTop: 25,
+    borderColor:'red',
+    borderWidth : 2,
+  
   },
-
+  logotext: {
+    color: '#61B846',
+    fontSize: 23,
+    fontWeight: '700',
+  },
   line: {
     width: '80%',
     backgroundColor: '#BFBCBC',
@@ -237,8 +256,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   logoImage: {
-    width: 50,
-    height: 50,
+    width: 110,
+    height:  110,
+
   },
 });
 export default Carts;
